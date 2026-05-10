@@ -1,0 +1,245 @@
+/* ============================================================
+   SearchKit Leaflet Map — Component Styles
+   com.skvare.searchkitleaflet
+   ============================================================ */
+
+/* ── Map wrapper ─────────────────────────────────────────── */
+.crm-search-display-leaflet {
+  position: relative;
+  width: 100%;
+}
+
+.crm-leaflet-map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.crm-leaflet-map-container {
+  width: 100%;
+  height: 500px; /* overridden by controller via inline style */
+  border: 1px solid #c8d4de;
+  border-radius: 4px;
+  background: #dde8f0;
+  z-index: 1;
+}
+
+/* Responsive: narrower height on small viewports */
+@media (max-width: 640px) {
+  .crm-leaflet-map-container {
+    height: 300px !important;
+  }
+}
+
+/* ── Loading overlay ─────────────────────────────────────── */
+.crm-leaflet-loading-overlay {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #c8d4de;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: #555;
+  z-index: 900;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── Footer bar ──────────────────────────────────────────── */
+.crm-leaflet-footer {
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #666;
+  background: #f7f9fb;
+  border: 1px solid #c8d4de;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.crm-leaflet-no-results {
+  color: #888;
+}
+
+.crm-leaflet-error {
+  padding: 8px 12px;
+  background: #fff3f3;
+  border: 1px solid #f5c6c6;
+  border-radius: 4px;
+  color: #c0392b;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+/* ── Custom div-icon pin ──────────────────────────────────── */
+.crm-map-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.crm-map-pin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: transform 0.15s ease;
+}
+
+.crm-map-pin:hover {
+  transform: rotate(-45deg) scale(1.2);
+}
+
+/* ── Popup styles ─────────────────────────────────────────── */
+.crm-leaflet-popup .leaflet-popup-content-wrapper {
+  border-radius: 5px;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  border: 1px solid #c8d4de;
+}
+
+.crm-leaflet-popup .leaflet-popup-content {
+  margin: 0;
+  min-width: 160px;
+}
+
+.crm-leaflet-popup-inner {
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.crm-popup-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a3f5f;
+  margin-bottom: 2px;
+}
+
+.crm-popup-subtitle {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.crm-popup-table {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+  margin: 6px 0;
+}
+
+.crm-popup-table td {
+  padding: 2px 4px;
+  vertical-align: top;
+}
+
+.crm-popup-label {
+  color: #888;
+  white-space: nowrap;
+  padding-right: 8px;
+  font-weight: 500;
+}
+
+.crm-popup-value {
+  color: #333;
+  word-break: break-word;
+}
+
+.crm-popup-link {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 12px;
+  color: #2a6496;
+  text-decoration: none;
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+  width: 100%;
+}
+
+.crm-popup-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Admin settings panel ─────────────────────────────────── */
+.crm-leaflet-settings {
+  padding: 4px 0;
+}
+
+.crm-leaflet-settings-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a3f5f;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dde4ec;
+}
+
+.crm-leaflet-fieldset {
+  border: 1px solid #dde4ec;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.crm-leaflet-fieldset legend {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  padding: 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.crm-leaflet-color-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.crm-leaflet-color-table th {
+  text-align: left;
+  color: #888;
+  font-weight: 500;
+  padding: 3px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.crm-leaflet-color-table td {
+  padding: 4px 4px;
+  vertical-align: middle;
+}
+
+.crm-leaflet-color-picker {
+  width: 36px;
+  height: 26px;
+  border: 1px solid #c8d4de;
+  border-radius: 3px;
+  padding: 1px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.crm-leaflet-color-hex {
+  font-family: monospace;
+  font-size: 11px;
+  color: #888;
+  margin-left: 5px;
+}
+
+.crm-leaflet-remove-row {
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.crm-leaflet-remove-row:hover {
+  color: #922b21;
+}

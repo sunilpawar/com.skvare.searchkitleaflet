@@ -1,0 +1,10 @@
+Run bin/setup-assets.sh to download Leaflet 1.9.4 and
+leaflet.markercluster 1.5.3 into this directory.
+
+Files needed:
+  leaflet.js, leaflet.css, images/marker-*.png
+  leaflet.markercluster.js, MarkerCluster.css, MarkerCluster.Default.css
+
+Sources:
+  https://unpkg.com/leaflet@1.9.4/dist/
+  https://unpkg.com/leaflet.markercluster@1.5.3/dist/

@@ -1,0 +1,34 @@
+<div class="crm-search-display-leaflet">
+
+  <div ng-if="$ctrl.error" class="crm-error crm-leaflet-error">
+    <i class="crm-i fa-exclamation-triangle" aria-hidden="true"></i>
+    {{ $ctrl.error }}
+  </div>
+
+  <div class="crm-leaflet-map-wrapper">
+    <div class="crm-leaflet-map-container"></div>
+
+    <div ng-if="$ctrl.loading" class="crm-leaflet-loading-overlay" aria-live="polite">
+      <span class="crm-loading">
+        <i class="crm-i fa-spinner fa-spin" aria-hidden="true"></i>
+        Loading map&hellip;
+      </span>
+    </div>
+  </div>
+
+  <div class="crm-leaflet-footer" ng-if="$ctrl.results.length">
+    <i class="crm-i fa-map-marker" aria-hidden="true"></i>
+    <strong>{{ $ctrl.results.length }}</strong> result(s) shown on map
+    <span ng-if="$ctrl.totalCount &amp;&amp; $ctrl.totalCount !== $ctrl.results.length">
+      of {{ $ctrl.totalCount }} total
+    </span>
+  </div>
+
+  <div class="crm-leaflet-footer crm-leaflet-no-results"
+       ng-if="!$ctrl.loading &amp;&amp; !$ctrl.results.length &amp;&amp; !$ctrl.error">
+    <i class="crm-i fa-info-circle" aria-hidden="true"></i>
+    No results with map coordinates found.
+    Check that the latitude and longitude columns are correct in the display settings.
+  </div>
+
+</div>

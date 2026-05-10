@@ -1,0 +1,157 @@
+<div class="crm-leaflet-settings">
+
+  <h4 class="crm-leaflet-settings-heading">
+    <i class="crm-i fa-map" aria-hidden="true"></i>
+    Leaflet Map — Display settings
+  </h4>
+
+  <!-- ── Column mapping ─────────────────────────────────────── -->
+  <fieldset class="crm-leaflet-fieldset">
+    <legend>Column mapping</legend>
+
+    <div class="crm-form-block">
+      <label for="leaflet-lat">Latitude column</label>
+      <select id="leaflet-lat" ng-model="$ctrl.display.settings.latitudeColumn" class="crm-form-select">
+        <option value="">-- select --</option>
+        <option ng-repeat="col in $ctrl.columns" value="{{ col.key }}">{{ col.label }}</option>
+      </select>
+      <div class="description">Usually <code>address_primary.geo_code_1</code></div>
+    </div>
+
+    <div class="crm-form-block">
+      <label for="leaflet-lng">Longitude column</label>
+      <select id="leaflet-lng" ng-model="$ctrl.display.settings.longitudeColumn" class="crm-form-select">
+        <option value="">-- select --</option>
+        <option ng-repeat="col in $ctrl.columns" value="{{ col.key }}">{{ col.label }}</option>
+      </select>
+      <div class="description">Usually <code>address_primary.geo_code_2</code></div>
+    </div>
+
+    <div class="crm-form-block">
+      <label for="leaflet-label">Popup label column</label>
+      <select id="leaflet-label" ng-model="$ctrl.display.settings.labelColumn" class="crm-form-select">
+        <option value="">-- none --</option>
+        <option ng-repeat="col in $ctrl.columns" value="{{ col.key }}">{{ col.label }}</option>
+      </select>
+    </div>
+
+    <div class="crm-form-block">
+      <label for="leaflet-subtitle">Popup subtitle column</label>
+      <select id="leaflet-subtitle" ng-model="$ctrl.display.settings.subtitleColumn" class="crm-form-select">
+        <option value="">-- none --</option>
+        <option ng-repeat="col in $ctrl.columns" value="{{ col.key }}">{{ col.label }}</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <!-- ── Marker colour ─────────────────────────────────────── -->
+  <fieldset class="crm-leaflet-fieldset">
+    <legend>Marker colour</legend>
+
+    <div class="crm-form-block">
+      <label for="leaflet-color-field">Colour by field</label>
+      <select id="leaflet-color-field" ng-model="$ctrl.display.settings.markerColorField" class="crm-form-select">
+        <option value="">-- static colour --</option>
+        <option ng-repeat="col in $ctrl.columns" value="{{ col.key }}">{{ col.label }}</option>
+      </select>
+    </div>
+
+    <div class="crm-form-block">
+      <label>Colour map
+        <small>(field value &rarr; hex colour)</small>
+      </label>
+      <table class="crm-leaflet-color-table">
+        <thead>
+          <tr>
+            <th>Field value</th>
+            <th>Colour</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in $ctrl.colorRows">
+            <td>
+              <input type="text" ng-model="row.value"
+                     ng-change="$ctrl.onColorChange()"
+                     placeholder="e.g. Individual"
+                     class="crm-form-text" />
+            </td>
+            <td>
+              <input type="color" ng-model="row.color"
+                     ng-change="$ctrl.onColorChange()"
+                     class="crm-leaflet-color-picker" />
+              <span class="crm-leaflet-color-hex">{{ row.color }}</span>
+            </td>
+            <td>
+              <a ng-click="$ctrl.removeColorRow($index)" title="Remove" class="crm-leaflet-remove-row">
+                <i class="crm-i fa-times" aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" ng-click="$ctrl.addColorRow()" class="crm-button crm-button-type-upload">
+        <i class="crm-i fa-plus" aria-hidden="true"></i> Add colour rule
+      </button>
+    </div>
+  </fieldset>
+
+  <!-- ── Clustering ────────────────────────────────────────── -->
+  <fieldset class="crm-leaflet-fieldset">
+    <legend>Clustering</legend>
+
+    <div class="crm-form-block">
+      <label>
+        <input type="checkbox" ng-model="$ctrl.display.settings.enableClustering" />
+        Enable marker clustering
+      </label>
+    </div>
+    <div class="crm-form-block" ng-if="$ctrl.display.settings.enableClustering">
+      <label>
+        <input type="checkbox" ng-model="$ctrl.display.settings.spiderfyOnMaxZoom" />
+        Spiderfy on max zoom
+      </label>
+    </div>
+    <div class="crm-form-block" ng-if="$ctrl.display.settings.enableClustering">
+      <label>
+        <input type="checkbox" ng-model="$ctrl.display.settings.showCoverageOnHover" />
+        Show cluster coverage on hover
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- ── Filters ───────────────────────────────────────────── -->
+  <fieldset class="crm-leaflet-fieldset">
+    <legend>Filters</legend>
+
+    <div class="crm-form-block">
+      <label>
+        <input type="checkbox" ng-model="$ctrl.display.settings.viewportFilter" />
+        Filter results to map viewport
+      </label>
+      <div class="description">
+        Re-queries the API when the user pans or zooms.
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- ── Tile layer ────────────────────────────────────────── -->
+  <fieldset class="crm-leaflet-fieldset">
+    <legend>Tile layer</legend>
+
+    <div class="crm-form-block">
+      <label for="leaflet-tile">Provider</label>
+      <select id="leaflet-tile" ng-model="$ctrl.display.settings.tileProvider" class="crm-form-select">
+        <option ng-repeat="tp in $ctrl.tileProviders" value="{{ tp.key }}">{{ tp.label }}</option>
+      </select>
+    </div>
+
+    <div class="crm-form-block">
+      <label for="leaflet-height">Map height (px)</label>
+      <input id="leaflet-height" type="number" min="200" max="1200" step="50"
+             ng-model="$ctrl.display.settings.mapHeight"
+             class="crm-form-text" style="width:100px" />
+    </div>
+  </fieldset>
+
+</div>
