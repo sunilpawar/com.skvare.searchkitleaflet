@@ -38,7 +38,7 @@ class DisplayType {
     'tileProvider'        => 'osm',
     'mapHeight'           => 500,
   ];
-
+  
   /**
    * Tile provider URL templates.
    */

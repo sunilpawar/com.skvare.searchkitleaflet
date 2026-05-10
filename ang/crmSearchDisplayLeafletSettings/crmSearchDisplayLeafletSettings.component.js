@@ -4,13 +4,9 @@
   /**
    * searchAdminDisplayLeafletMap component.
    *
-   * Registered in the crmSearchAdmin module so that SearchKit's admin template
-   * can resolve <search-admin-display-leaflet_map> (Angular normalises the
-   * underscore to camelCase: searchAdminDisplayLeafletMap).
-   *
-   * It is loaded as part of crmSearchDisplayLeaflet, which is automatically
-   * added to crmSearchDisplay (and transitively to crmSearchAdmin) by
-   * AngularDependencyInjector because of the 'exports' key on the module.
+   * Registered in the crmSearchDisplayLeafletSettings module so that SearchKit's
+   * admin template can resolve <search-admin-display-leaflet_map> (Angular
+   * normalises the underscore to camelCase: searchAdminDisplayLeafletMap).
    *
    * Bindings mirror the other searchAdminDisplay* components:
    *   display   - the SearchDisplay record being edited (passed by ref; we
@@ -18,7 +14,7 @@
    *   apiEntity - the primary entity of the saved search
    *   apiParams - savedSearch.api_params (contains the 'select' array)
    */
-  angular.module('crmSearchAdmin').component('searchAdminDisplayLeafletMap', {
+  angular.module('crmSearchDisplayLeafletSettings').component('searchAdminDisplayLeafletMap', {
 
     bindings: {
       display:   '<',
@@ -26,7 +22,7 @@
       apiParams: '<',
     },
 
-    templateUrl: '~/crmSearchDisplayLeaflet/crmSearchDisplayLeafletSettings.html',
+    templateUrl: '~/crmSearchDisplayLeafletSettings/crmSearchDisplayLeafletSettings.html',
 
     controller: function($scope) {
       var ctrl = this;
